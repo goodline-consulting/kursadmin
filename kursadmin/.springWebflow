@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.4.v200803111444]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/kursadminflow</file>
+			<name><![CDATA[kursadminflow]]></name>
+		</config>
+	</configs>
+</webflow-project-description>

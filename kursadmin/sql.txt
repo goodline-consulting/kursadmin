@@ -1,0 +1,37 @@
+select kurs.beteckning, kurs.kursnamn, kurs.niva, kurs.pris, lokal.lokalnamn, instruktor.namn, kurs.veckodag,
+       kurs.startdatum, kurs.starttid, kurs.lengd from kurs
+       inner join instruktor on kurs.instruktor = instruktor.iid
+  	   inner join lokal on kurs.lokal = lokal.lid order by kurs.startdatum
+
+
+
+
+
+2,"Pumpan","Färgargårdstorget 1","","Pelle","pumpan@sumpan","","","",0,""
+3,"Sundyberg Folkets hus","Sturegatan","","lelle","","","","",120,""
+4,"Fritidsgården Sköndal","","","","","","","Sköndal",0,""
+5,"Årsta Folkets hus","","","","","","","",0,""
+
+
+3,"Emma Blom","","","emmablom_@hotmail.com","","","SKÖNDAL",""
+4,"Monica Blixt","","","monica.blixt@glocalnet.net","","","",""
+5,"Robert Levin","","","robert@jcpro.se","","","",""
+6,"Birgitta Wänqvist","","","birgitta.wanqvist@nordea.se","","","",""
+7,"Kitty Wahlstrand","","","kitty.wahlstrand@luckyline.se","","","",""
+
+
+
+
+insert into kurs (beteckning, instruktor, kursnamn, lengd, lokal, niva, pris, startdatum, starttid, veckodag)
+            values('2008HTSK-N1', 7, 'Nybörjarkurs HT 2008', 90, 4, 1, 750, DATE '2008-09-22', '19:30', 'Måndag');
+
+insert into kurs (beteckning, instruktor, kursnamn, lengd, lokal, niva, pris, startdatum, starttid, veckodag)
+            values('2008HTAR-F1', 3, 'Fortsättningskurs HT 2008', 90, 5, 2, 750, DATE '2008-09-23', '19:30', 'Tisdag');
+
+insert into kurs (beteckning, instruktor, kursnamn, lengd, lokal, niva, pris, startdatum, starttid, veckodag)
+            values('2008HTPU-I1', 5, 'IntermediateKurs HT 2008', 90, 2, 6, 750, DATE '2008-08-08', '19:30', 'Måndag');
+
+
+
+
+Årsta Folkets hus

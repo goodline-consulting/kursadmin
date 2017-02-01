@@ -1,0 +1,9 @@
+﻿insert into config (kategori, namn, varde) values('kalvikt', '1', 'Bokad');
+insert into config (kategori, namn, varde) values('kalvikt', '2', 'Preliminär');
+insert into config (kategori, namn, varde) values('kalvikt', '3', 'Viktigt');
+insert into config (kategori, namn, varde) values('kalvikt', '4', 'Förfrågan');
+insert into config (kategori, namn, varde) values('kalvikt', '5', 'Vilande');
+insert into config (kategori, namn, varde) values('kalvikt', '6', 'info');
+insert into config (kategori, namn, varde) values('kalakt', 'Möhippa', 'Möhippa');
+insert into config (kategori, namn, varde) values('kalakt', 'Workshop', 'Workshop');
+insert into config (kategori, namn, varde) values('kalakt', 'Möte', 'Möte');

@@ -1,0 +1,164 @@
+
+body {font-family: Verdana; font-size: 12px;}
+p {font-family: Verdana; font-size: 11px;}
+td {font-family: Verdana; font-size: 11px;}
+td.storre {font-family: Verdana; font-size: 12px; valign:top}
+td.rub1 {font-family: Verdana; font-size: 20px; color: darkblue;}
+th {font-family: Verdana; font-size: 12px; color: darkblue; background: #ffffcc; align: left;}
+li {font-family: Verdana; font-size: 11px;}
+h1 {font-family: Verdana; font-size: 24px; color: darkblue;}
+h2 {font-family: Verdana; font-size: 20px; color: darkblue;}
+h3 {font-family: Verdana; font-size: 16px; color: darkblue;}
+
+.error { color: red; }
+.infocell { background: #EEEEEE; }
+.tableheader {font-family: Verdana; font-size: 20px; color: darkblue;}
+tr.jamnrad {background-color: #FFFFFF;}
+tr.uddarad {background-color: #EEEEEE;}
+tr.highrow {background-color: lightblue;}
+table.olle {	
+	
+}
+table.olle th {
+
+	background-color: white;
+	font-family: Verdana; 
+	font-size: 12px; 
+	color: darkblue;
+	-moz-border-radius: ;
+}
+table.olle td {
+	
+}
+table.proginfo {	
+	
+}
+table.proginfo th {
+	
+}
+table.proginfo td {
+	background-color: white;
+	font-family: Verdana; 
+	font-size: 12px; 
+	color: darkblue;
+	-moz-border-radius: ;	
+}
+table.tiny {
+	border-width: 1px;
+	border-spacing: ;
+	border-style: none;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.tiny th {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+table.tiny td {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: ;
+}
+
+
+#menu {
+	float:left;
+	width:100%;
+	background:#efefef;
+	font-size:93%;
+	line-height:normal;
+	border-bottom:1px solid #666;
+	}
+#menu ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+#menu li {
+	display:inline;
+	margin:0;
+	padding:0;
+	}
+#menu a {
+	float:left;
+	background:url("images/tableftF.gif") no-repeat left top;
+	margin:0;
+	padding:0 0 0 4px;
+	text-decoration:none;
+	}
+#menu a span {
+	float:left;
+	display:block;
+	background:url("images/tabrightF.gif") no-repeat right top;
+	padding:5px 15px 4px 6px;
+	color:#666;
+	}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#menu a span {float:none;}
+/* End IE5-Mac hack */
+#menu a:hover span {color:#FFFFFF;}
+#menu a:hover {background-position:0% -42px;}
+#menu a:hover span {background-position:100% -42px;}
+
+#formbutton {
+	float:left;	
+	background:#efefef;
+	font-size:12;
+	line-height:normal;
+	border-bottom:1px solid #666;
+	}
+	
+#formbutton a {
+	float:left;
+	background:url("images/tableftF.gif") no-repeat left top;
+	margin:0;
+	padding:0 0 0 4px;
+	text-decoration:none;
+	}
+#formbutton a span {
+	float:left;
+	display:block;
+	background:url("images/tabrightF.gif") no-repeat right top;
+	padding:5px 15px 4px 6px;
+	color:#6	
+	}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#formbutton a span {float:none;}
+/* End IE5-Mac hack */	
+#formbutton a:hover span {color:#FFFFFF;}
+#formbutton a:hover {background-position:0% -42px;}
+#formbutton a:hover span {background-position:100% -42px;}
+
+input.tablebutton
+{
+   font-size:11px;
+   font-family:Verdana,sans-serif;
+   font-weight:bold;
+   color:#888888;
+   width:80px;
+   background-color:#EEEEEE;
+   border-style:solid;
+   border-color:#BBBBBB;
+   border-width:1px;
+}
+input.tablebuttonobs
+{
+   font-size:11px;
+   font-family:Verdana,sans-serif;
+   font-weight:bold;
+   color:#FFFFFF;
+   width:80px;
+   background-color:#F5A9A9;
+   border-style:solid;
+   border-color:#BBBBBB;
+   border-width:1px;
+}
+

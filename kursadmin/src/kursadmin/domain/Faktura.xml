@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faktura nr = "123">
+<fakturadatum></fakturadatum>
+<kundnummer></kundnummer>
+<kundnamn></kundnamn>
+<belopp></belopp>
+<moms></moms>
+<betalningsmottagare>GoodLine consulting</betalningsmottagare>
+<betalningsadress></betalningsadress>
+<betalningspostadress>120 61</betalningspostadress>
+<betalningspostadress></betalningspostadress>
+<forfallodatum></forfallodatum>
+<ocr></ocr>
+<org></org>
+<vat></vat>
+<tfn></tfn>
+<email></email>
+<bankgiro></bankgiro>
+<plusgiro></plusgiro>
+<fakturarader>
+	<fakturarad>
+		<spec></spec>
+		<belopp></belopp>
+		<moms></moms>
+	</fakturarad>
+</fakturarader>
+</faktura>

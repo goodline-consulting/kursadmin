@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.0.xsd ">
+
+	<!-- the parent application context definition for the springapp application -->
+	<bean id="fakturaManager" class="kursadmin.service.FakturaManager">
+		<property name="fakturaDao" ref="fakturaDao" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="personDao" ref="personDao" />
+		<property name="elevDao" ref="elevDao" />
+		<property name="betalningDao" ref="betalningDao" />	
+		<property name="organisationDao" ref="organisationDao" />
+	</bean>		
+	<bean id="bgcManager" class="kursadmin.service.BgcManager">
+		<property name="personDao" ref="personDao" />	
+		<property name="elevDao" ref="elevDao" />
+		<property name="betalningDao" ref="betalningDao" />	
+		<property name="kursDao" ref="kursDao" />
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />		
+		<property name="configManager" ref="configManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+	</bean>
+	<bean id="personManager" class="kursadmin.service.PersonManager">
+		<property name="personDao" ref="personDao" />
+		<property name="betalningDao" ref="betalningDao" />	
+	</bean>
+	<bean id="instruktorManager" class="kursadmin.service.InstruktorManager">
+		<property name="instruktorDao" ref="instruktorDao" />
+	</bean>
+	<bean id="anvandareManager" class="kursadmin.service.AnvandareManager">
+		<property name="anvandareDao" ref="anvandareDao" />
+	</bean>
+	<bean id="lokalManager" class="kursadmin.service.LokalManager">
+		<property name="lokalDao" ref="lokalDao" />
+	</bean>
+	<bean id="kursManager" class="kursadmin.service.KursManager">
+		<property name="kursDao" ref="kursDao" />
+		<property name="elevDao" ref="elevDao" />
+		<property name="kursTillfDao" ref="kursTillfDao" />
+		<property name="nvaroManager" ref="nvaroManager" />
+	</bean>
+	<bean id="kursProgramManager" class="kursadmin.service.KursProgramManager">
+		<property name="programDao" ref="programDao" />
+		<property name="kursDao" ref="kursDao" />
+		<property name="instruktorDao" ref="instruktorDao" />
+		<property name="configManager" ref="configManager" />
+		<property name="progGen">
+			<bean class="kursadmin.service.htmlgen.GenProgImp" />
+		</property>	
+	</bean>
+	<bean id="kursTypManager" class="kursadmin.service.KursTypManager">
+		<property name="kursTypDao" ref="kursTypDao" />
+	</bean>
+	<bean id="kursAnmalanManager" class="kursadmin.service.KursAnmalanManager">
+		<property name="kursAnmalanDao" ref="kursAnmalanDao" />
+		<property name="personDao" ref="personDao" />
+		<property name="kursDao" ref="kursDao" />
+		<property name="elevDao" ref="elevDao" />
+		<property name="mailManager" ref="mailManager" />
+		<property name="configManager" ref="configManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+		<property name="kursTypManager" ref="kursTypManager" />
+	</bean>
+	<bean id="elevManager" class="kursadmin.service.ElevManager">
+		<property name="elevDao" ref="elevDao" />
+	</bean>
+	<bean id="kalenderManager" class="kursadmin.service.KalenderManager">
+		<property name="kalenderDao" ref="kalenderDao" />
+	</bean>
+	<bean id="nvaroManager" class="kursadmin.service.NvaroManager">
+		<property name="nvaroDao" ref="nvaroDao" />
+	</bean>	
+	<bean id="configManager" class="kursadmin.service.ConfigManager">
+		<property name="configDao" ref="configDao" />
+	</bean>
+	<bean id="organisationManager" class="kursadmin.service.OrganisationManager">
+		<property name="organisationDao" ref="organisationDao" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<aop:config>
+		<aop:advisor pointcut="execution(* *..ProductManager.*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+
+	<tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="save*" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+</beans>
+

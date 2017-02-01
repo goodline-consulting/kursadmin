@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="locations">
+    	<list>
+        	<value>classpath:jdbc.properties</value>
+        </list>
+   	</property>
+</bean>
+
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+</bean>
+
+<!-- Nedan följer alla dataobjekt -->
+<bean id="fakturaDao" class="kursadmin.repository.JdbcFakturaDao">
+	<property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="betalningDao" class="kursadmin.repository.JdbcBetalningDao">
+	<property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="personDao" class="kursadmin.repository.JdbcPersonDao">
+	<property name="dataSource" ref="dataSource"/>
+</bean>                           
+<bean id="instruktorDao" class="kursadmin.repository.JdbcInstruktorDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>      
+<bean id="anvandareDao" class="kursadmin.repository.JdbcAnvandareDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="lokalDao" class="kursadmin.repository.JdbcLokalDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="kursDao" class="kursadmin.repository.JdbcKursDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>                     
+<bean id="kursTypDao" class="kursadmin.repository.JdbcKursTypDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="kursTillfDao" class="kursadmin.repository.JdbcKursTillfDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>  
+<bean id="kursAnmalanDao" class="kursadmin.repository.JdbcKursAnmalanDao">
+	<property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="programDao" class="kursadmin.repository.JdbcProgramDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>        
+<bean id="elevDao" class="kursadmin.repository.JdbcElevDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="kalenderDao" class="kursadmin.repository.JdbcKalenderDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean> 
+<bean id="nvaroDao" class="kursadmin.repository.JdbcNvaroDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="configDao" class="kursadmin.repository.JdbcConfigDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+<bean id="mailMottagarDao" class="kursadmin.repository.JdbcMailMottagarDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>  
+<bean id="organisationDao" class="kursadmin.repository.JdbcOrganisationDao">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+
+</beans>                         

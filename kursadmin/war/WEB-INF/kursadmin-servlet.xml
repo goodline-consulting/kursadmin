@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- the application context definition for the springapp DispatcherServlet -->
+	<!-- Instruktörssidorna -->
+	<bean name="/teachers.htm" class="kursadmin.web.TeachersController">
+		<property name="personManager" ref="personManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="elevManager" ref="elevManager"/>
+	</bean>
+	<!-- Huvudprogrammet -->
+	<bean name="/main.htm" class="kursadmin.web.MainController" />		
+	<!--  Personer -->
+	<bean name="/personedit.htm"
+		class="kursadmin.web.PersonFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="person" />
+		<property name="commandClass" value="kursadmin.domain.Person" />
+		<property name="validator">
+			<bean class="kursadmin.service.PersonValidator">
+				<property name="personManager" ref="personManager" />
+				<property name="fakturaManager" ref="fakturaManager" /> 
+			</bean>
+		</property>
+		<property name="formView" value="WEB-INF/jsp/personedit.jsp" />
+		<property name="successView" value="personer.htm" />
+		<property name="personManager" ref="personManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+	</bean>
+	<bean name="/personer.htm" class="kursadmin.web.PersonController">
+		<property name="personManager" ref="personManager" />
+		<property name="kursManager" ref="kursManager" />
+	</bean>
+	<!--  Instruktörer -->
+	<bean name="/instruktorer.htm"
+		class="kursadmin.web.InstruktorController">
+		<property name="instruktorManager" ref="instruktorManager" />
+	</bean>
+	<bean name="/instruktoredit.htm"
+		class="kursadmin.web.InstruktorFormController">
+		<property name="instruktorManager" ref="instruktorManager" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<!-- Lokaler -->
+	<bean name="/lokaler.htm" class="kursadmin.web.LokalController">
+		<property name="lokalManager" ref="lokalManager" />
+	</bean>
+	<bean name="/lokaledit.htm"
+		class="kursadmin.web.LokalFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="lokal" />
+		<property name="commandClass" value="kursadmin.domain.Lokal" />
+		<property name="validator">
+			<bean class="kursadmin.service.LokalValidator" />
+		</property>
+		<property name="formView" value="WEB-INF/jsp/lokaledit.jsp" />
+		<property name="successView" value="lokaler.htm" />
+		<property name="lokalManager" ref="lokalManager" />
+	</bean>
+	<!--  Organisationer -->
+	<bean name="/organisationer.htm" class="kursadmin.web.OrganisationController">
+		<property name="organisationManager" ref="organisationManager" />
+	</bean>
+	<bean name="/organisationedit.htm"
+		class="kursadmin.web.OrganisationFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="organisation" />
+		<property name="commandClass" value="kursadmin.domain.Organisation" />
+		<property name="validator">
+			<bean class="kursadmin.service.OrganisationValidator" />
+		</property>
+		<property name="formView" value="WEB-INF/jsp/organisationedit.jsp" />
+		<property name="successView" value="organisationer.htm" />
+		<property name="organisationManager" ref="organisationManager" />
+	</bean>
+	<!-- Kurser -->
+	<bean name="/kurser.htm" class="kursadmin.web.KursController">
+		<property name="kursManager" ref="kursManager" />
+		<property name="lokalManager" ref="lokalManager" />
+		<property name="instruktorManager" ref="instruktorManager" />
+		<property name="kursTypManager" ref="kursTypManager" />
+	</bean>
+	<bean name="/rapporter.htm"
+		class="kursadmin.web.RapportController">
+		<property name="elevManager" ref="elevManager" />
+		<property name="personManager" ref="personManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="configManager" ref="configManager" />
+		<property name="lokalManager" ref="lokalManager" />
+		<property name="anmGen">
+			<bean class="kursadmin.service.htmlgen.GenAnmImp" />
+		</property>
+		<property name="oversiktGen">
+			<bean class="kursadmin.service.htmlgen.GenOversiktImp" />
+		</property>
+	</bean>
+	<bean name="/kursedit.htm"
+		class="kursadmin.web.KursFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="kursAll" />
+		<property name="commandClass" value="kursadmin.domain.KursAll" />
+		<property name="validator">
+			<bean class="kursadmin.service.KursValidator" />
+		</property>
+		<property name="formView" value="WEB-INF/jsp/kursedit.jsp" />
+		<property name="successView" value="kurser.htm" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="kursTypManager" ref="kursTypManager" />
+		<property name="lokalManager" ref="lokalManager" />
+		<property name="instruktorManager" ref="instruktorManager" />
+	</bean>
+	<bean name="/elever.htm" class="kursadmin.web.ElevController">
+		<property name="elevManager" ref="elevManager" />
+		<property name="personManager" ref="personManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="configManager" ref="configManager" />
+		<property name="mailManager" ref="mailManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />
+	</bean>
+	<bean name="/bytkurs.htm" class="kursadmin.web.BytKursController">
+		<property name="kursManager" ref="kursManager" />
+		<property name="elevManager" ref="elevManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />	
+	</bean>
+	<bean name="/nvaro.htm" class="kursadmin.web.NvaroController">
+		<property name="nvaroManager" ref="nvaroManager" />
+		<property name="elevManager" ref="elevManager" />
+		<property name="kursTillfDao" ref="kursTillfDao" />
+		<property name="kursManager" ref="kursManager" />	
+	</bean>
+	<bean name="/kursprogram.htm"
+		class="kursadmin.web.ProgramController">
+		<property name="kursProgramManager" ref="kursProgramManager" />
+		<property name="kursManager" ref="kursManager" />	
+	</bean>
+	<!-- Fakturor -->
+	<bean name="/fakturera.htm" class="kursadmin.web.FaktureraController">
+		<property name="elevManager" ref="elevManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="personManager" ref="personManager" />	
+	</bean>
+	<bean name="/faktura.htm" class="kursadmin.web.FakturaController">
+		<property name="elevManager" ref="elevManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="personManager" ref="personManager" />
+		<property name="fakturaManager" ref="fakturaManager" />	
+		<property name="betalningDao" ref="betalningDao" />	
+	</bean>
+	<!-- Anmälningar -->
+	<bean name="/anmalningar.htm"
+		class="kursadmin.web.KursAnmalanController">
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />
+		<property name="fakturaManager" ref="fakturaManager" />
+		<property name="kursManager" ref="kursManager" />
+		<property name="elevManager" ref="elevManager" />
+		<property name="personManager" ref="personManager" />	
+	</bean>
+	<bean name="/anmalan.htm"
+		class="kursadmin.web.WebAnmalanController">
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />
+		<property name="mailManager" ref="mailManager" />
+		<property name="configManager" ref="configManager" />
+		
+	</bean>
+	<!-- Mail -->
+	<bean name="/mailurval.htm"
+		class="kursadmin.web.MailUrvalController">
+		<property name="kursManager" ref="kursManager" />
+		<property name="configManager" ref="configManager" />
+		<property name="mailManager" ref="mailManager" />
+		<property name="lokalManager" ref="lokalManager" />
+		<property name="instruktorManager" ref="instruktorManager" />
+		<property name="mailMottagarDao" ref="mailMottagarDao" />
+		<property name="kursTypManager" ref="kursTypManager" />
+	</bean>
+	<!-- SUB-MENU Ekonomi -->
+	<bean name="/ekonomi.htm" class="kursadmin.web.EkonomiController" />
+	<bean name="/betalning.htm" class="kursadmin.web.BetalningController">
+		<property name="kursManager" ref="kursManager"/>
+		<property name="elevManager" ref="elevManager"/>
+		<property name="personManager" ref="personManager"/>
+		<property name="configManager" ref="configManager" />
+		<property name="betalningDao" ref="betalningDao" />	
+		<property name="fakturaManager" ref="fakturaManager" />
+		<property name="kursAnmalanManager" ref="kursAnmalanManager" />
+	</bean>
+	<bean name="/bgc.htm" class="kursadmin.web.BgcController">
+		<property name="bgcManager" ref="bgcManager"/>
+	</bean>
+	<bean name="/bgclist.htm" class="kursadmin.web.BgcListController">
+		<property name="bgcManager" ref="bgcManager"/>
+	</bean>
+	<!-- Kalender -->
+	<bean name="/kalender.htm"
+		class="kursadmin.web.KalenderController">
+		<property name="kalenderManager" ref="kalenderManager" />
+		<property name="configManager" ref="configManager" />
+	</bean>	
+	<bean name="/kalenderedit.htm"
+		class="kursadmin.web.KalenderFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="kalender" />
+		<property name="commandClass" value="kursadmin.domain.Kalender" />
+		<property name="validator">
+			<bean class="kursadmin.service.KalenderValidator" />
+		</property>
+		<property name="formView" value="WEB-INF/jsp/kalenderedit.jsp" />
+		<property name="successView" value="kalender.htm" />
+		<property name="kalenderManager" ref="kalenderManager" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<!--  SUB-MENU Inställningar -->
+	<bean name="/config.htm" class="kursadmin.web.ConfigController" />
+	<!--  gruyndinställningar -->	
+	<bean name="/grundconfig.htm"
+		class="kursadmin.web.GrundConfigFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="grundConfig" />
+		<property name="commandClass" value="kursadmin.domain.GrundConfig" />
+		<property name="formView" value="WEB-INF/jsp/grundconfig.jsp" />
+		<property name="successView" value="config.htm" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<!--  Kurstyper -->
+	<bean name="/kurstyper.htm"
+		class="kursadmin.web.KursTypController">
+		<property name="kursTypManager" ref="kursTypManager"/>
+		<property name="organisationManager" ref="organisationManager" />
+	</bean>
+	<!-- Programpunkter -->
+	<bean name="/programpunkter.htm"
+		class="kursadmin.web.ProgramPunktController">
+		<property name="programDao" ref="programDao" />
+		<property name="kursTypManager" ref="kursTypManager"/>
+	</bean>
+	<bean name="/mailconfig.htm"
+		class="kursadmin.web.MailConfigFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="mailConfig" />
+		<property name="commandClass" value="kursadmin.domain.MailConfig" />
+		<property name="formView" value="WEB-INF/jsp/mailconfig.jsp" />
+		<property name="successView" value="kurstyper.htm" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<bean name="/tackconfig.htm"
+		class="kursadmin.web.TackConfigFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="tackConfig" />
+		<property name="commandClass" value="kursadmin.domain.TackConfig" />
+		<property name="formView" value="WEB-INF/jsp/tackconfig.jsp" />
+		<property name="successView" value="kurstyper.htm" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<bean name="/programpunktedit.htm"
+		class="kursadmin.web.ProgramPunktFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="programPunkt" />
+		<property name="commandClass" value="kursadmin.domain.ProgramPunkt" />
+		<property name="formView" value="WEB-INF/jsp/programpunktedit.jsp" />
+		<property name="successView" value="programpunkter.htm" />
+		<property name="programDao" ref="programDao" />
+		<property name="kursTypManager" ref="kursTypManager" />
+	</bean>
+	<!-- Ladda Programpunkter -->
+	<bean name="/programpunktconfig.htm"
+		class="kursadmin.web.ProgramPunktConfigController">
+		<property name="programDao" ref="programDao" />
+		<property name="kursTypManager" ref="kursTypManager" />
+	</bean>
+	<!-- Mail config -->
+	<bean name="/mailsetup.htm"
+		class="kursadmin.web.MailSetupFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="mailSetup" />
+		<property name="commandClass" value="kursadmin.domain.MailSetup" />
+		<property name="formView" value="WEB-INF/jsp/mailsetup.jsp" />
+		<property name="successView" value="config.htm" />
+		<property name="configManager" ref="configManager" />		
+	</bean>	
+	<!-- Kalender Config -->
+	<bean name="/kalenderconfig.htm"
+		class="kursadmin.web.KalenderConfigController">
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<!-- Sökvägar -->
+	<bean name="/pathconfig.htm"
+		class="kursadmin.web.PathConfigFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="pathConfig" />
+		<property name="commandClass" value="kursadmin.domain.PathConfig" />
+		<property name="formView" value="WEB-INF/jsp/pathconfig.jsp" />
+		<property name="successView" value="config.htm" />
+		<property name="configManager" ref="configManager" />
+	</bean>
+	<!-- Användare -->	
+	<bean name="/anvandare.htm"
+		class="kursadmin.web.AnvandareController">
+		<property name="anvandareManager" ref="anvandareManager" />
+	</bean>
+	<bean name="/anvandaredit.htm"
+		class="kursadmin.web.AnvandareFormController">
+		<property name="sessionForm" value="true" />
+		<property name="commandName" value="anvandare" />
+		<property name="commandClass" value="kursadmin.domain.Anvandare" />
+		<property name="formView" value="WEB-INF/jsp/anvandaredit.jsp" />
+		<property name="successView" value="anvandare.htm" />
+		<property name="anvandareManager" ref="anvandareManager" />
+	</bean>	
+</beans>
