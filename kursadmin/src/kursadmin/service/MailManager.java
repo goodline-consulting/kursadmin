@@ -9,13 +9,18 @@ import kursadmin.domain.PathConfig;
 import java.io.File;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -24,10 +29,12 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 
 public class MailManager implements MailManagerInterface
 {
-	private JavaMailSender mailSender;
+	private JavaMailSenderImpl mailSender;
 	private ConfigManagerInterface configManager;
 	private PathConfig pathConfig;
 	private MailSetup mailSetup;
+	
+	private Session session;
 	
 	public void sendMailKurs (final MailConfig mc, final String[] to, final String fakturaPath)
 	{
@@ -56,7 +63,7 @@ public class MailManager implements MailManagerInterface
 	    };	    
 				 		
 		try
-	    {
+	    {			
 		    mailSender.send(prep);
         }
         catch(MailException ex) 
@@ -121,7 +128,25 @@ public class MailManager implements MailManagerInterface
 	}
 	public void setMailSender(JavaMailSender mailSender) 
 	{
-        this.mailSender = mailSender;
+		final String host = "smtpauth.c04.levonline.com";
+		final String user = "c0420900";
+		final String passwd = "Alice00l";
+		
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.smtp.host", host);       
+        properties.setProperty("mail.smtp.auth", "true");
+        
+		this.mailSender = (JavaMailSenderImpl) mailSender;
+        session = Session.getDefaultInstance(properties, new Authenticator() 
+        {
+
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() 
+            {
+                return new PasswordAuthentication(user, passwd);
+            }    
+        });
+        this.mailSender.setSession(session);
     }
 	
 	public void setConfigManager(ConfigManagerInterface configManager) 
