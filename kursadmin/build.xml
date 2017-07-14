@@ -5,8 +5,10 @@
 
     <property name="src.dir" value="src"/>
     <property name="web.dir" value="war"/>
-    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-	<property name="lib.dir" value="${web.dir}/WEB-INF/lib"/>
+   <!-- <property name="build.dir" value="${web.dir}/WEB-INF/classes"/> 
+	<property name="lib.dir" value="${web.dir}/WEB-INF/lib"/> -->
+	<property name="build.dir" value="bin"/>
+	<property name="lib.dir" value="${build.dir}"/>
     <property name="name" value="kursadmin"/>
 
     <path id="master-classpath">

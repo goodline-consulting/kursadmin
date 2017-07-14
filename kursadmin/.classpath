@@ -19,13 +19,13 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/mailapi.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/pop3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/smtp.jar"/>
-	<classpathentry kind="lib" path="/usr/local/apache-tomcat-5.5.30/common/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/imap.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/activation.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-codec.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/mysql-connector-java-5.0.4-bin.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-security-core-2.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/roblen/Develop/workspace/lib/iText-5.0.4.jar"/>
-	<classpathentry kind="lib" path="/Users/roblen/Develop/workspace/kursadmin/war/WEB-INF/lib/jdom-1.1.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/iText.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jdom-1.1.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

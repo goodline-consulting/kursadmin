@@ -66,7 +66,7 @@ public class WebAnmalanController implements Controller
 	        mail.setRubrik(request.getParameter("subject") + " (" + kursAll.getBeteckning() + ")");
 	        mail.setFooter("");
 	        mail.setSender(request.getParameter("email"));
-	        mail.setBody("Kursanmälan till " + 
+	        mail.setBody("Kursanm‰lan till " + 
 	        		      kursAll.getKursNiva() + " i " +
 	        		      kursAll.getLokalNamn() + ", " + 
 	        		      kursAll.getVeckodag() + "ar kl " +
